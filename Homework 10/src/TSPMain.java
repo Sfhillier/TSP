@@ -31,10 +31,16 @@ public class TSPMain {
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		ArrayList<String> text = new ArrayList<String>();
 		String line = br.readLine();
+		
+		// While loops that parses each line of the text and
+		// Only adds it to the ArrayList if it will be needed for the
+		// TSP search
 		while(line != null){
 			
 			text.add(line);
 		}
+		
+		// Close the BufferedReader to prevent memory leaks
 		br.close();
 	}
 
