@@ -37,21 +37,24 @@ public class TSPMain {
 		// Only adds it to the ArrayList if it will be needed for the
 		// TSP search
 		while(line != null){
-			
-			text.add(line);
+			// Checks the line and only adds it to the
+			// arrayList if the first character is a number
+			// because many of the lines are just comments
+			if(Character.isDigit(line.charAt(0))){
+				text.add(line);
+				/**
+				 * Prints the line, but this is just for testing while 
+				 * working on the project
+				 */
+				System.out.println(line);
+			}
+			// Reads the next line
 			line = br.readLine();
 		}
 		
-		// Loop to iterate through 
-		for(int i = 0; i < text.size(); i++){
-			if(Character.isDigit(text.get(i).charAt(0))){
-				System.out.println(text.get(i));
-			}
-			else if(!Character.isDigit(text.get(i).charAt(0))){
-				text.remove(i);
-			}
-		}
-		
+		// Prints out the size of the text ArrayList for
+		// testing purposes to make sure that the 
+		// invalid lines are being ignored properly
 		System.out.println(text.size());
 		// Close the BufferedReader to prevent memory leaks
 		br.close();
