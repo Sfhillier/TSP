@@ -25,14 +25,14 @@ public class TSPMain {
 		// input for the filename to be searched
 		//String fileName = args[0];
 		String fileName = "dj38.tsp";
-		
+
 		// Buffered reader and FileReader objects to grab each line
 		// of the text file and an ArrayList to store each line
 		// which is contained within the line variable
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		ArrayList<String> text = new ArrayList<String>();
 		String line = br.readLine();
-		
+
 		// While loops that parses each line of the text and
 		// Only adds it to the ArrayList if it will be needed for the
 		// TSP search
@@ -51,13 +51,40 @@ public class TSPMain {
 			// Reads the next line
 			line = br.readLine();
 		}
-		
+
+		// ArrayList to store all of the cities
+		ArrayList<City> cities = new ArrayList<City>();
+		// For loop to iterate through each line in text
+		// and convert that to a city object
+		// with an id, and x and y coordinates
+		String firstPart = "", secondPart = "", thirdPart = "";
+		int index = 0;
+		for(int i = 0; i < text.size(); i++){
+			String nextLine = text.get(i);
+			do{
+				firstPart += nextLine.charAt(index);
+				index++;
+			}while(nextLine.charAt(index) != ' ');
+
+			do{
+				secondPart += nextLine.charAt(index);
+				index++;
+			}while(nextLine.charAt(index) != ' ');
+
+			do{
+				thirdPart += nextLine.charAt(i);
+				index++;
+			}while(nextLine.charAt(i) != ' ');
+			index = 0;
+			System.out.println("This is testing my strings" + firstPart + "\t" + secondPart + "\t" + thirdPart);
+		}
 		// Prints out the size of the text ArrayList for
 		// testing purposes to make sure that the 
 		// invalid lines are being ignored properly
 		System.out.println(text.size());
+
 		// Close the BufferedReader to prevent memory leaks
 		br.close();
 	}
-	
+
 }
