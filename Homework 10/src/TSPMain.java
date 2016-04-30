@@ -23,7 +23,8 @@ public class TSPMain {
 	public static void main(String[] args) throws IOException {
 		// String variable to store the command line
 		// input for the filename to be searched
-		String fileName = args[0];
+		//String fileName = args[0];
+		String fileName = "dj38.tsp";
 		
 		// Buffered reader and FileReader objects to grab each line
 		// of the text file and an ArrayList to store each line
@@ -38,10 +39,22 @@ public class TSPMain {
 		while(line != null){
 			
 			text.add(line);
+			line = br.readLine();
 		}
 		
+		// Loop to iterate through 
+		for(int i = 0; i < text.size(); i++){
+			if(Character.isDigit(text.get(i).charAt(0))){
+				System.out.println(text.get(i));
+			}
+			else if(!Character.isDigit(text.get(i).charAt(0))){
+				text.remove(i);
+			}
+		}
+		
+		System.out.println(text.size());
 		// Close the BufferedReader to prevent memory leaks
 		br.close();
 	}
-
+	
 }
