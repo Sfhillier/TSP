@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -82,5 +83,18 @@ public class TSPMain {
 
 		// Close the BufferedReader to prevent memory leaks
 		br.close();
+		
+		// Randomizing the first solution to the search
+		//----------------------------------------------
+		// Integer to keep track of the path
+		int pathCost = 0;
+		// Random number to choose the first city
+		Random rand = new Random();
+		int firstCity = cities.get(rand.nextInt(cities.size()-1)+1).getID();
+		// Empty set of visited cities
+		ArrayList<City> visitedCities = new ArrayList<City>();
+		while(!cities.isEmpty()){
+			
+		}
 	}
 }
