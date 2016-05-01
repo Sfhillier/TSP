@@ -51,4 +51,11 @@ public class City {
 		return (int)Math.round(Math.sqrt((c1.xCoord-c2.xCoord)*c1.xCoord-c2.xCoord)+(c1.yCoord-c2.yCoord)*(c1.yCoord-c2.yCoord));
 	}
 	
+	/**
+	 * @return String representation of the city including
+	 * the id, xCoord, and yCoord of the speicified city
+	 */
+	public String toString(){
+		return id + "\t" + xCoord + "\t" + yCoord;
+	}
 }

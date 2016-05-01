@@ -3,9 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * 
- */
 
 /**
  * @author Scott Hillier
@@ -46,7 +43,7 @@ public class TSPMain {
 				 * Prints the line, but this is just for testing while 
 				 * working on the project
 				 */
-				System.out.println(line);
+				//System.out.println(line);
 			}
 			// Reads the next line
 			line = br.readLine();
@@ -58,33 +55,32 @@ public class TSPMain {
 		// and convert that to a city object
 		// with an id, and x and y coordinates
 		String firstPart = "", secondPart = "", thirdPart = "";
-		int index = 0;
+		
 		for(int i = 0; i < text.size(); i++){
+			// Temporary string for each line to be parsed
 			String nextLine = text.get(i);
-			do{
-				firstPart += nextLine.charAt(index);
-				index++;
-			}while(nextLine.charAt(index) != ' ');
-
-			do{
-				secondPart += nextLine.charAt(index);
-				index++;
-			}while(nextLine.charAt(index) != ' ');
-
-			do{
-				thirdPart += nextLine.charAt(i);
-				index++;
-			}while(nextLine.charAt(i) != ' ');
-			index = 0;
-			System.out.println("This is testing my strings" + firstPart + "\t" + secondPart + "\t" + thirdPart);
+			// First part creates a substring from the first character to the first space
+			// which is used to hold the id
+			firstPart = nextLine.substring(0, nextLine.indexOf(' '));
+			// Second part creates a substring of nextLine that starts at 1 index past the end 
+			// of firstPart and ends at the first space encountered when moving backwards from the end
+			// of the string
+			secondPart = nextLine.substring(firstPart.length()+1, nextLine.lastIndexOf(' ', nextLine.length()));
+			// Third part creates a substring of nextLine that starts at the last space
+			// and ends at the end, this is possible because there is no space at the end
+			// of each line
+			thirdPart = nextLine.substring(nextLine.lastIndexOf(' '));
+			// Parses each substring to an int or double and uses them as parameters
+			// to create city objects which it adds to its cities list
+			cities.add(new City(Integer.parseInt(firstPart), Double.parseDouble(secondPart), Double.parseDouble(thirdPart)));
 		}
+		
 		// Prints out the size of the text ArrayList for
 		// testing purposes to make sure that the 
 		// invalid lines are being ignored properly
-		System.out.println(text.size());
+		System.out.println(cities.size());
 
 		// Close the BufferedReader to prevent memory leaks
 		br.close();
 	}
-
 }
