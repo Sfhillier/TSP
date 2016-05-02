@@ -12,9 +12,9 @@ public class City {
 	 * 
 	 */
 	// Instance variables
-	private int id;
-	private double xCoord;
-	private double yCoord;
+	protected int id;
+	protected double xCoord;
+	protected double yCoord;
 	
 	/*
 	 * Standard constructor with an id as well
@@ -39,16 +39,6 @@ public class City {
 	// Getter method for the city's yCoord
 	public double getY(){
 		return yCoord;
-	}
-	
-	/**
-	 * Method to calculate the distance between two cities
-	 * @param c1, c2
-	 * where c1 is the first city and c2 is the second city
-	 * @return the Euclidean distance as an integer value of the distance between them
-	 */
-	public int getDistance(City c1, City c2){
-		return (int)Math.round(Math.sqrt((c1.xCoord-c2.xCoord)*c1.xCoord-c2.xCoord)+(c1.yCoord-c2.yCoord)*(c1.yCoord-c2.yCoord));
 	}
 	
 	/**
